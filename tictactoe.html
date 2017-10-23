@@ -1,0 +1,266 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tic-Tac-Toe</title>
+</head>
+<script type="text/javascript">
+
+var count = 0;
+var buttonStr = "button";
+var x;
+var y;
+var winValue;
+var initial = 0;
+var buttons = [];
+//if count mod 2 == 0 user turn
+//if count mod 2 == 1 computer turn
+
+
+function check(){
+    if(get('button00').value == 'X' && get('button01').value == 'X' && get('button02').value == 'X' && get('button03').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+
+    if(get('button00').value == 'O' && get('button01').value == 'O' && get('button02').value == 'O' && get('button03').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+
+    if(get('button10').value == 'X' && get('button11').value == 'X' && get('button12').value == 'X' && get('button13').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+    if(get('button10').value == 'O' && get('button11').value == 'O' && get('button12').value == 'O' && get('button13').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+
+    if(get('button20').value == 'X' && get('button21').value == 'X' && get('button22').value == 'X' && get('button23').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+    if(get('button20').value == 'O' && get('button21').value == 'O' && get('button22').value == 'O' && get('button23').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+
+    if(get('button30').value == 'X' && get('button31').value == 'X' && get('button32').value == 'X' && get('button33').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+    if(get('button30').value == 'O' && get('button31').value == 'O' && get('button32').value == 'O' && get('button33').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+
+    if(get('button00').value == 'X' && get('button11').value == 'X' && get('button22').value == 'X' && get('button33').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+    if(get('button00').value == 'O' && get('button11').value == 'O' && get('button22').value == 'O' && get('button33').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+    if(get('button03').value == 'X' && get('button12').value == 'X' && get('button21').value == 'X' && get('button30').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+    if(get('button03').value == 'O' && get('button12').value == 'O' && get('button21').value == 'O' && get('button30').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+    if(get('button00').value == 'X' && get('button10').value == 'X' && get('button20').value == 'X' && get('button30').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+    if(get('button00').value == 'O' && get('button10').value == 'O' && get('button20').value == 'O' && get('button30').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+    if(get('button01').value == 'X' && get('button11').value == 'X' && get('button21').value == 'X' && get('button31').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+    if(get('button01').value == 'O' && get('button11').value == 'O' && get('button21').value == 'O' && get('button31').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+    if(get('button02').value == 'X' && get('button12').value == 'X' && get('button22').value == 'X' && get('button32').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+    if(get('button02').value == 'O' && get('button12').value == 'O' && get('button22').value == 'O' && get('button32').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+    if(get('button03').value == 'X' && get('button13').value == 'X' && get('button23').value == 'X' && get('button33').value == 'X'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'X user win';
+    }
+    if(get('button03').value == 'O' && get('button13').value == 'O' && get('button23').value == 'O' && get('button33').value == 'O'){
+      winValue = 1;
+        document.getElementById('count').textContent = 'O user win';
+    }
+
+    if(winValue == 1){
+      for(var i=0;i<4;i++){
+        for(var j=0;j<4;j++){
+          var btnstr = 'button' + i + j;
+          get(btnstr).disabled = true;
+        }
+      }
+    }
+}
+
+function get(str){
+  return document.getElementById(str);
+}
+
+function handleButton(clickedButton) {
+     if(count % 2 == 0){
+        //alert("row" + clickedButton.parentNode.parentNode.rowIndex + " - column" + clickedButton.parentNode.cellIndex );
+        clickedButton.value ="X";
+        buttonStr= 'button' + clickedButton.parentNode.parentNode.rowIndex + clickedButton.parentNode.cellIndex;   
+        buttons[initial] = buttonStr;
+        initial = initial + 1;
+        count = count + 1;
+        clickedButton.disabled = true;
+        check();
+  
+
+        x = Math.floor(Math.random() * 4);
+        y = Math.floor(Math.random() * 4);
+
+        buttonStr = "button" + x + y;
+        var tdElem = document.getElementById ( buttonStr );
+        var tdText = tdElem.value;
+        
+        while(tdText != " "){
+            x = Math.floor(Math.random() * 4);
+            y = Math.floor(Math.random() * 4);
+
+            buttonStr = "button" + x + y;
+            var tdElem = document.getElementById ( buttonStr );
+            var tdText = tdElem.value;
+        }
+
+        if(tdText == " "){
+            buttons[initial] = buttonStr;
+            initial = initial + 1;
+            document.getElementById(buttonStr).click();
+            check();
+        }
+
+      }
+
+   else if(count % 2 == 1){
+        clickedButton.value ="O";
+        clickedButton.disabled = true;
+        count = count + 1;
+        check();
+    }
+
+    if(buttons.length >= 16){
+      check();
+      if(winValue != 1){
+      document.getElementById(buttons[0]).disabled = false;
+      document.getElementById(buttons[0]).value = " ";
+      document.getElementById(buttons[1]).disabled = false;
+      document.getElementById(buttons[1]).value = " ";
+      buttons.splice(0,2);
+      for(var i = 0;i<buttons.length;i++){
+        if(buttons[i] == null){
+          buttons.splice(i,i+1);
+        }
+      }
+    }
+}
+} 
+
+</script>
+<style type="text/css">
+  h1 {
+    padding-top: 20px;
+    position: relative;
+    color: black;
+    text-align: center;
+  }
+  #count {
+  position: fixed;
+  font: bold 60px arial;
+  position: relative;
+  top:350px;
+  text-align: center;
+  }
+
+  .cell {
+  width:80px;
+  height:80px;
+  border: 5px solid #000000;
+  background: #FFFFFF;
+  font-size: 46pt;
+  font-family: arial;
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+
+}
+table{
+position: fixed;
+top: 70px;
+left:520px;
+}
+</style>
+
+<body>
+
+<h1>Tic Tac Toe</h1>
+
+<table align="center" id="tictactoetable">
+<tbody>
+<tr>
+<td><input id="button00" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button01" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button02" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button03" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+</tr>
+<tr>
+<td><input id="button10" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button11" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button12" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button13" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+</tr>
+<tr>
+<td><input id="button20" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button21" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button22" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button23" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+</tr>
+<tr>
+<td><input id="button30" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button31" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button32" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+<td><input id="button33" class="cell" value=" " onclick="handleButton(this)"
+type="button"></td>
+</tr>
+</tbody>
+<div id="count"> </div>
+
+</body>
+</html>
